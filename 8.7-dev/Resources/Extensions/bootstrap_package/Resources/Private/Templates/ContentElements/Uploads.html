@@ -1,0 +1,60 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+
+    <f:if condition="{files}">
+        <ul class="media-list">
+            <f:for each="{files}" as="file" iteration="fileIterator">
+                <li class="media">
+                    <f:if condition="{data.uploads_type} == 2">
+                        <f:if condition="{f:uri.image(src: 'file:{f:if(condition: file.originalFile, then: \'file:{file.originalFile.uid}\', else: \'file:{file.uid}\')}')} != '/'">
+                            <div class="media-left">
+                                <a href="{file.publicUrl}"{f:if(condition: file.title, then: ' title="{file.title}"')}{f:if(condition: data.target, then: ' target="{data.target}"')}>
+                                    <f:media file="{file}" width="{settings.uploads.preview.width}" height="{settings.uploads.preview.height}" alt="{file.alternative}" />
+                                </a>
+                            </div>
+                        </f:if>
+                    </f:if>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="{file.publicUrl}"{f:if(condition: file.title, then: ' title="{file.title}"')}{f:if(condition: data.target, then: ' target="{data.target}"')}>
+                                <f:if condition="{data.uploads_type} == 1">
+                                    <span class="uploads-fileicon">
+                                        <f:switch expression="{f:format.case(value: file.extension, mode: 'lower')}">
+                                            <f:case value="avi"><span class="glyphicon glyphicon-film"></span></f:case>
+                                            <f:case value="mov"><span class="glyphicon glyphicon-film"></span></f:case>
+                                            <f:case value="mpg"><span class="glyphicon glyphicon-film"></span></f:case>
+                                            <f:case value="mpeg"><span class="glyphicon glyphicon-film"></span></f:case>
+                                            <f:case value="mkv"><span class="glyphicon glyphicon-film"></span></f:case>
+                                            <f:case value="jpg"><span class="glyphicon glyphicon-picture"></span></f:case>
+                                            <f:case value="gif"><span class="glyphicon glyphicon-picture"></span></f:case>
+                                            <f:case value="png"><span class="glyphicon glyphicon-picture"></span></f:case>
+                                            <f:case value="bmp"><span class="glyphicon glyphicon-picture"></span></f:case>
+                                            <f:case value="ai"><span class="glyphicon glyphicon-picture"></span></f:case>
+                                            <f:case value="eps"><span class="glyphicon glyphicon-picture"></span></f:case>
+                                            <f:case value="ico"><span class="glyphicon glyphicon-picture"></span></f:case>
+                                            <f:case value="tga"><span class="glyphicon glyphicon-picture"></span></f:case>
+                                            <f:case value="tif"><span class="glyphicon glyphicon-picture"></span></f:case>
+                                            <f:defaultCase><span class="glyphicon glyphicon-file"></span></f:defaultCase>
+                                        </f:switch>
+                                    </span>
+                                </f:if>
+                                <span class="uploads-filename">{f:if(condition: file.title, then: file.title, else: file.name)}</span>
+                            </a>
+                            <f:if condition="{data.filelink_size}">
+                                <span class="uploads-filesize"><f:format.bytes value="{file.size}" /></span>
+                            </f:if>
+                        </h4>
+                        <f:if condition="{data.uploads_description}">
+                            <f:if condition="{file.description}">
+                                <p class="uploads-filedescription">{file.description}</p>
+                            </f:if>
+                        </f:if>
+                    </div>
+                </li>
+            </f:for>
+        </ul>
+    </f:if>
+
+</f:section>
+</html>

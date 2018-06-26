@@ -1,0 +1,543 @@
+################
+#### HELPER ####
+################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/Helper/ParseFunc.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/Helper/ContentElement.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/Helper/DynamicContent.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/Helper/FrontendEditing.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/Helper/PageClass.typoscript">
+
+
+#############################################################
+#### CONTENT ELEMENT RENDERING                           ####
+#### Manual inclusion to keep control over loading order ####
+#############################################################
+
+#### TYPO3 DEFAULT CONTENT ELEMENT RENDERING
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Audio.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Bullets.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Div.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Header.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Html.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Image.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/List.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Media.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/MenuAbstract.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/MenuCategorizedContent.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/MenuCategorizedPages.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/MenuPages.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/MenuSubpages.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/MenuRecentlyUpdated.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/MenuRelatedPages.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/MenuSection.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/MenuSectionPages.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/MenuSitemap.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/MenuSitemapPages.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Quote.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Shortcut.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Table.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Text.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Textcolumn.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Textteaser.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Textpic.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Textmedia.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Uploads.typoscript">
+
+#### EXTENSIONS
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/Extension/Form.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/Extension/FrontendLogin.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/Extension/IndexedSearch.typoscript">
+
+#### BOOTSTRAP PACKAGE CONTENT ELEMENT RENDERING
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Accordion.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Carousel.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/CarouselSmall.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/CarouselFullscreen.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/ExternalMedia.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/ListGroup.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Panel.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Tab.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/Texticon.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/MenuThumbnailDir.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/MenuThumbnailList.typoscript">
+
+
+###################################
+#### BOOSTRAP PACKAGE SETTINGS ####
+###################################
+plugin.tx_bootstrappackage {
+    settings {
+        overrideLessVariables = {$plugin.bootstrap_package.settings.overrideLessVariables}
+        cssSourceMapping = {$plugin.bootstrap_package.settings.cssSourceMapping}
+    }
+}
+
+
+##############
+#### PAGE ####
+##############
+page = PAGE
+page {
+    typeNum = 0
+    shortcutIcon = {$page.favicon.file}
+
+    bodyTagCObject = COA
+    bodyTagCObject {
+        10 = TEXT
+        10.data = TSFE:id
+        10.noTrimWrap = | id="p|"|
+        20 =< lib.page.class
+        20.stdWrap.noTrimWrap = | class="|"|
+        wrap = <body|>
+    }
+
+    headerData {
+        // Flip ahead browsing for IE10/11
+        // http://msdn.microsoft.com/en-us/library/ie/jj883726(v=vs.85).aspx
+        10 = HMENU
+        10 {
+            special = browse
+            special {
+                items = prev|next
+            }
+            1 = TMENU
+            1.NO {
+                allWrap = <link rel="prev" href="|"> |*| <link rel="next" href="|">
+                doNotLinkIt = 1
+                stdWrap {
+                    typolink {
+                        parameter.data = field:uid
+                        useCacheHash = 1
+                        returnLast = url
+                    }
+                }
+            }
+        }
+    }
+
+    10 = FLUIDTEMPLATE
+    10 {
+        # Template names will be generated automaticly by converting the applied
+        # backend_layout, there is no explicit mapping nessesary anymore.
+        #
+        # BackendLayout Key
+        # subnavigation_right_2_columns -> SubnavigationRight2Columns.html
+        #
+        # Backend Record
+        # uid: 1 -> 1.html
+        #
+        # Database Entry
+        # value: -1 -> None.html
+        # value: pagets__subnavigation_right_2_columns -> SubnavigationRight2Columns.html
+        templateName = TEXT
+        templateName {
+            cObject = TEXT
+            cObject {
+                data = pagelayout
+                required = 1
+                case = uppercamelcase
+                split {
+                    token = pagets__
+                    cObjNum = 1
+                    1.current = 1
+                }
+            }
+            ifEmpty = Default
+        }
+
+        templateRootPaths {
+            0 = EXT:bootstrap_package/Resources/Private/Templates/Page/
+            1 = {$page.fluidtemplate.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:bootstrap_package/Resources/Private/Partials/Page/
+            1 = {$page.fluidtemplate.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:bootstrap_package/Resources/Private/Layouts/Page/
+            1 = {$page.fluidtemplate.layoutRootPath}
+        }
+
+        ##########################
+        ### DATA PREPROCESSING ###
+        ##########################
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            10 {
+                levels = 2
+                includeSpacer = 1
+                as = mainnavigation
+                dataProcessing {
+                    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                    10 {
+                        references.fieldName = nav_icon
+                        as = icon
+                    }
+                }
+            }
+            20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            20 {
+                entryLevel = 1
+                levels = 2
+                expandAll = 0
+                includeSpacer = 1
+                as = subnavigation
+            }
+            30 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            30 {
+                special = rootline
+                special.range = 0|-1
+                includeNotInMenu = 1
+                as = breadcrumb
+                if {
+                    value = {$page.theme.breadcrumbEnableLevel}
+                    value {
+                        insertData = 1
+                        prioriCalc = 1
+                        stdWrap.wrap = |-1
+                    }
+                    isGreaterThan {
+                        data = level
+                    }
+                }
+            }
+            40 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            40 {
+                special = language
+                special.value = {$page.theme.language.languageValue}
+                as = languagenavigation
+                if {
+                    isTrue = {$page.theme.language.languageValue}
+                }
+            }
+            50 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            50 {
+                special = {$page.theme.meta.navigationType}
+                special.value = {$page.theme.meta.navigationValue}
+                includeNotInMenu = {$page.theme.meta.includeNotInMenu}
+                as = metanavigation
+                if {
+                    isTrue = {$page.theme.meta.navigationValue}
+                }
+            }
+        }
+
+        ################
+        ### SETTINGS ###
+        ################
+        settings {
+            logo {
+                file = {$page.logo.file}
+                fileInverted = {$page.logo.fileInverted}
+                height = {$page.logo.height}
+                width = {$page.logo.width}
+                linktitle = {$page.logo.linktitle}
+            }
+            breadcrumb {
+                enable = {$page.theme.breadcrumb}
+            }
+            navigation {
+                style = {$page.theme.navigationstyle}
+                type = {$page.theme.navigationtype}
+                icon {
+                    width = {$page.theme.navigationicon.width}
+                    height = {$page.theme.navigationicon.height}
+                }
+            }
+            copyright {
+                enable = {$page.theme.copyright.enable}
+                text = {$page.theme.copyright.text}
+            }
+            meta {
+                enable = {$page.theme.meta.enable}
+            }
+            language {
+                enable = {$page.theme.language.enable}
+            }
+        }
+
+        #################
+        ### VARIABLES ###
+        #################
+        variables {
+            showFooter = TEXT
+            showFooter.value = {$page.theme.footersection.enable}
+            pageTitle = TEXT
+            pageTitle.data = page:title
+            siteTitle = TEXT
+            siteTitle.data = TSFE:tmpl|setup|sitetitle
+            rootPage = TEXT
+            rootPage.data = leveluid:0
+            logoAlt = COA
+            logoAlt {
+                10 = TEXT
+                10 {
+                    data = TSFE:tmpl|setup|sitetitle
+                    noTrimWrap = || logo|
+                    if.isFalse = {$page.logo.alt}
+                }
+                20 = TEXT
+                20 {
+                    value = {$page.logo.alt}
+                    if.isTrue = {$page.logo.alt}
+                }
+            }
+            # BreadcrumbExtendedValue should be used to display the title of a
+            # single record. For example the title of a news record.
+            breadcrumbExtendedValue = COA
+            breadcrumbExtendedValue {
+            }
+        }
+
+        stdWrap.replacement {
+            1 {
+                search = http://###BACKEND_URL###/
+                replace.typolink {
+                    parameter = typo3/
+                    returnLast = url
+                }
+            }
+            2 {
+                search = ###FRONTEND_URL###
+                replace.typolink {
+                    parameter.data = leveluid:0
+                    returnLast = url
+                }
+            }
+            3 {
+                search = ###CURRENTYEAR###
+                replace {
+                    data = date:U
+                    strftime = %Y
+                }
+            }
+            4 {
+                search = ###SPACE###
+                replace {
+                    char = 32
+                }
+            }
+        }
+    }
+
+    meta {
+        # New notation available since TYPO3 7.4
+        # see https://forge.typo3.org/issues/67360 for more details
+        viewport = {$page.meta.viewport}
+        robots = {$page.meta.robots}
+        apple-mobile-web-app-capable = {$page.meta.apple-mobile-web-app-capable}
+        description = {$page.meta.description}
+        description {
+            override.field = description
+        }
+        author = {$page.meta.author}
+        author {
+            override.field = author
+        }
+        keywords = {$page.meta.keywords}
+        keywords {
+            override.field = keywords
+        }
+        X-UA-Compatible = {$page.meta.compatible}
+        X-UA-Compatible {
+            attribute = http-equiv
+        }
+
+        # Google
+        google = {$page.meta.google}
+        google-site-verification = {$page.meta.google-site-verification}
+
+        # OpenGraph Tags
+        og:title {
+            attribute = property
+            field = title
+        }
+        og:site_name {
+            attribute = property
+            data = TSFE:tmpl|setup|sitetitle
+        }
+        og:description = {$page.meta.description}
+        og:description {
+            attribute = property
+            field = description
+        }
+        og:image {
+            attribute = property
+            stdWrap.cObject = FILES
+            stdWrap.cObject {
+                references {
+                    data = levelfield:-1, media, slide
+                }
+                maxItems = 1
+                renderObj = COA
+                renderObj {
+                    10 = IMG_RESOURCE
+                    10 {
+                        file {
+                            import.data = file:current:uid
+                            treatIdAsReference = 1
+                            width = 1280c
+                            height = 720c
+                        }
+                        stdWrap {
+                            typolink {
+                                parameter.data = TSFE:lastImgResourceInfo|3
+                                returnLast = url
+                                forceAbsoluteUrl = 1
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    includeCSSLibs {
+        googlewebfont = https://fonts.googleapis.com/css?family={$plugin.bootstrap_package.settings.less.google-webfont}:{$plugin.bootstrap_package.settings.less.google-webfont-weight}
+        googlewebfont {
+            external = 1
+            disableCompression = 1
+            excludeFromConcatenation = 1
+        }
+        ionicons = EXT:bootstrap_package/Resources/Public/Css/ionicons.min.css
+    }
+
+    includeCSS {
+        # bootstrap will be included in the themes.less file
+        # for standalone usage just uncomment the following line
+        # bootstrap = EXT:bootstrap_package/Resources/Public/Less/Bootstrap/bootstrap.less
+        theme = EXT:bootstrap_package/Resources/Public/Less/Theme/theme.less
+    }
+
+    includeJSLibs {
+        modernizr = EXT:bootstrap_package/Resources/Public/JavaScript/Dist/modernizr.min.js
+        modernizr.forceOnTop = 1
+        modernizr.async = 1
+    }
+
+    includeJSFooterlibs {
+        jquery = EXT:bootstrap_package/Resources/Public/JavaScript/Libs/jquery.min.js
+        jquery.forceOnTop = 1
+        responsiveimages = EXT:bootstrap_package/Resources/Public/JavaScript/Dist/jquery.responsiveimages.min.js
+        bootstrap = EXT:bootstrap_package/Resources/Public/JavaScript/Libs/bootstrap.min.js
+        photoswipe_core = EXT:bootstrap_package/Resources/Public/JavaScript/Libs/photoswipe.min.js
+        photoswipe_ui = EXT:bootstrap_package/Resources/Public/JavaScript/Libs/photoswipe-ui-default.min.js
+
+        #### Add swipe support for boostrap components
+        hammerjs = EXT:bootstrap_package/Resources/Public/JavaScript/Libs/hammer.min.js
+        bootstrap_swipe = EXT:bootstrap_package/Resources/Public/JavaScript/Dist/bootstrap.swipe.min.js
+        bootstrap_popover = EXT:bootstrap_package/Resources/Public/JavaScript/Dist/bootstrap.popover.min.js
+        bootstrap_stickyheader = EXT:bootstrap_package/Resources/Public/JavaScript/Dist/bootstrap.stickyheader.min.js
+        bootstrap_smoothscroll = EXT:bootstrap_package/Resources/Public/JavaScript/Dist/bootstrap.smoothscroll.min.js
+        #### Basic lightbox implementation for bootstrap
+        bootstrap_lightbox = EXT:bootstrap_package/Resources/Public/JavaScript/Dist/bootstrap.lightbox.min.js
+        #### Toggle collapsed CSS class on the navbar toggle button and fixes dropdown on touch devices
+        bootstrap_navbar = EXT:bootstrap_package/Resources/Public/JavaScript/Dist/bootstrap.navbar.min.js
+    }
+
+    jsFooterInline {
+        # Google Analytics
+        10 = COA
+        10 {
+            if {
+                isTrue = {$page.tracking.google.trackingID}
+            }
+            10 = TEXT
+            10.value (
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '{$page.tracking.google.trackingID}', 'auto');
+            )
+            20 = TEXT
+            20 {
+                if {
+                    isTrue = {$page.tracking.google.anonymizeIp}
+                }
+
+                value (
+
+    ga('set', 'anonymizeIp', true);
+                )
+            }
+
+            90 = TEXT
+            90.value (
+
+    ga('send', 'pageview');
+            )
+        }
+    }
+}
+
+
+###################################################
+#### EXCLUDE PAGE FROM EXTERNAL SEARCH RESULTS ####
+#### IF NO SEARCH IS SET FOR THIS PAGE         ####
+###################################################
+[globalVar = TSFE:page|no_search = 1]
+    page.meta.robots = noindex,follow
+[end]
+
+
+################
+#### CONFIG ####
+################
+config {
+    absRefPrefix = auto
+    no_cache = {$config.no_cache}
+    pageTitleFirst = 1
+    pageTitleSeparator = -
+    pageTitleSeparator.noTrimWrap = | | |
+    linkVars = L(int)
+    prefixLocalAnchors = {$config.prefixLocalAnchors}
+    typolinkEnableLinksAcrossDomains = {$config.typolinkEnableLinksAcrossDomains}
+    doctype = html5
+    removeDefaultJS = {$config.removeDefaultJS}
+    admPanel = {$config.admPanel}
+    debug = 0
+    sendCacheHeaders = {$config.sendCacheHeaders}
+    index_enable = 1
+    index_externals = 1
+    index_metatags = 1
+    headerComment = {$config.headerComment}
+
+    // Enable RealUrl
+    tx_realurl_enable = 1
+
+    // Language Settings
+    sys_language_uid = 0
+    sys_language_overlay = 1
+    sys_language_mode = content_fallback
+    language = en
+    locale_all = en_US.UTF-8
+    htmlTag_setParams = lang="en" dir="ltr" class="no-js"
+
+    // Compression and Concatenation of CSS and JS Files
+    compressJs = {$config.compressJs}
+    compressCss = {$config.compressCss}
+    concatenateJs = {$config.concatenateJs}
+    concatenateCss = {$config.concatenateCss}
+}
+
+
+#############################
+#### LANGUAGE CONDITIONS ####
+#############################
+[globalVar = GP:L = 1]
+    config {
+        sys_language_uid = 1
+        language = da
+        locale_all = da_DK.UTF-8
+        htmlTag_setParams = lang="da" dir="ltr" class="no-js"
+    }
+[global]
+[globalVar = GP:L = 2]
+    config {
+        sys_language_uid = 2
+        language = de
+        locale_all = de_DE.UTF-8
+        htmlTag_setParams = lang="de" dir="ltr" class="no-js"
+    }
+[global]

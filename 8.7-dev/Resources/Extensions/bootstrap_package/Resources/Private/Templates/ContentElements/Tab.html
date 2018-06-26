@@ -1,0 +1,51 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+
+    <f:if condition="{records}">
+        <f:variable name="activeTab">{records.0.data.uid}</f:variable>
+        <f:if condition="{data.pi_flexform.default_tab}">
+            <f:for each="{records}" as="record" iteration="iteration">
+                <f:if condition="{data.pi_flexform.default_tab} == {record.data.uid} || {data.pi_flexform.default_tab} == {record.data._LOCALIZED_UID}">
+                    <f:variable name="activeTab">{record.data.uid}</f:variable>
+                </f:if>
+            </f:for>
+        </f:if>
+        <div role="tabpanel" id="tab-{data.uid}">
+            <ul class="nav nav-tabs" role="tablist">
+                <f:for each="{records}" as="record" iteration="iteration">
+                    <li role="presentation" {f:if(condition: '{activeTab} == {record.data.uid}',then: 'class="active"')}>
+                        <f:link.page additionalAttributes="{data-toggle: 'tab', role: 'tab', aria-controls: 'tab-{data.uid}-{record.data.uid}'}" section="tab-{data.uid}-{record.data.uid}">
+                            <span>{record.data.header}</span>
+                        </f:link.page>
+                    </li>
+                </f:for>
+            </ul>
+            <div class="tab-content">
+                <f:for each="{records}" as="record" iteration="iteration">
+                    <div role="tabpanel" class="tab-pane {f:if(condition: '{activeTab} == {record.data.uid}',then: 'active')}" id="tab-{data.uid}-{record.data.uid}">
+
+                        <f:if condition="{record.files}">
+                            <f:then>
+                                <div class="row">
+                                    <div class="{f:if(condition: '{record.data.mediaorient} == 0', else: 'col-md-push-6 ')}col-md-6">
+                                        <f:render partial="Media/Gallery" arguments="{files: record.files, data: record.data, settings: settings}" />
+                                    </div>
+                                    <div class="{f:if(condition: '{record.data.mediaorient} == 0', else: 'col-md-pull-6 ')}col-md-6">
+                                        <f:format.html>{record.data.bodytext}</f:format.html>
+                                    </div>
+                                </div>
+                            </f:then>
+                            <f:else>
+                                <f:format.html>{record.data.bodytext}</f:format.html>
+                            </f:else>
+                        </f:if>
+
+                    </div>
+                </f:for>
+            </div>
+        </div>
+    </f:if>
+
+</f:section>
+</html>

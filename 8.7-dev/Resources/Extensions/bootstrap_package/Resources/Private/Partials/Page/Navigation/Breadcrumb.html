@@ -1,0 +1,43 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{settings.breadcrumb.enable}">
+    <f:if condition="{breadcrumb}">
+        <div aria-labelledby="breadcrumb" role="navigation" class="breadcrumb-section hidden-xs hidden-sm">
+            <div class="container">
+                <p class="sr-only" id="breadcrumb">{f:translate(key: 'breadcrumb', extensionName: 'bootstrap_package')}</p>
+                <ol class="breadcrumb">
+                    <f:for each="{breadcrumb}" as="item">
+                        <f:if condition="{breadcrumbExtendedValue}">
+                            <f:then>
+                                <li>
+                                    <a href="{item.link}"{f:if(condition: item.target, then: ' target="{item.target}"')} title="{item.title}">
+                                        <span>{item.title}</span>
+                                    </a>
+                                </li>
+                            </f:then>
+                            <f:else>
+                                <li class="{f:if(condition: item.current, then: 'active')}">
+                                    <f:if condition="{item.current}">
+                                        <f:then>
+                                            <span>{item.title}</span>
+                                        </f:then>
+                                        <f:else>
+                                            <a href="{item.link}"{f:if(condition: item.target, then: ' target="{item.target}"')} title="{item.title}">
+                                                <span>{item.title}</span>
+                                            </a>
+                                        </f:else>
+                                    </f:if>
+                                </li>
+                            </f:else>
+                        </f:if>
+                    </f:for>
+                    <f:if condition="{breadcrumbExtendedValue}">
+                        <li class="active">
+                            <span>{breadcrumbExtendedValue}</span>
+                        </li>
+                    </f:if>
+                </ol>
+            </div>
+        </div>
+    </f:if>
+</f:if>
+</html>

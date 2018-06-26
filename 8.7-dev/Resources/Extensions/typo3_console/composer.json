@@ -1,0 +1,144 @@
+{
+    "repositories": {
+        "local": {
+            "type": "path",
+            "url": "Packages/*"
+        }
+    },
+    "name": "helhum/typo3-console",
+    "description": "A reliable and powerful command line interface for TYPO3 CMS",
+    "keywords": [
+        "TYPO3",
+        "cli",
+        "console",
+        "command",
+        "commandline"
+    ],
+    "homepage": "http://insight.helhum.io/post/104528981610/about-the-beauty-and-power-of-typo3-console",
+    "support": {
+        "issues": "https://github.com/TYPO3-Console/typo3_console/issues"
+    },
+    "authors": [
+        {
+            "name": "Helmut Hummel",
+            "email": "info@helhum.io",
+            "role": "Developer",
+            "homepage": "http://helhum.io"
+        }
+    ],
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=7.0.0 <7.3",
+        "helhum/typo3-console-plugin": "^2.0.2",
+
+        "typo3/cms-backend": "^8.7.10 || >=9.1.0 <9.4",
+        "typo3/cms-core": "^8.7.10 || >=9.1.0 <9.4",
+        "typo3/cms-extbase": "^8.7.10 || >=9.1.0 <9.4",
+        "typo3/cms-extensionmanager": "^8.7.10 || >=9.1.0 <9.4",
+        "typo3/cms-fluid": "^8.7.10 || >=9.1.0 <9.4",
+        "typo3/cms-frontend": "^8.7.10 || >=9.1.0 <9.4",
+        "typo3/cms-install": "^8.7.10 || >=9.1.0 <9.4",
+        "typo3/cms-saltedpasswords": "^8.7.10 || >=9.1.0 <9.4",
+        "typo3/cms-scheduler": "^8.7.10 || >=9.1.0 <9.4",
+
+        "doctrine/annotations": "^1.4",
+        "symfony/console": "^3.4.4 || ^4.0",
+        "symfony/process": "^3.4.4 || ^4.0",
+        "helhum/config-loader": "^0.9.0"
+    },
+    "require-dev": {
+        "typo3/cms-reports": "^8.7.10 || >=9.1.0 <9.4 || 9.4.*@dev",
+        "typo3/cms-filemetadata": "^8.7.10 || >=9.1.0 <9.4 || 9.4.*@dev",
+
+        "typo3-console/php-server-command": "^0.2",
+        "typo3-console/create-reference-command": "@dev",
+        "symfony/filesystem": "^3.2",
+        "nimut/testing-framework": "dev-master",
+        "cweagans/composer-patches": "^1.6"
+    },
+    "conflict": {
+        "typo3-ter/dbal": "*",
+        "friendsoftypo3/dbal": "*",
+        "symfony/finder": "2.7.44 || 2.8.37 || 3.4.7 || 4.0.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Helhum\\Typo3Console\\": [
+                "Classes/Console/",
+                "Classes/Compatibility/"
+            ]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Helhum\\Typo3Console\\Tests\\": "Tests/Console/"
+        }
+    },
+    "replace": {
+        "typo3_console": "self.version",
+        "typo3-ter/typo3-console": "self.version",
+        "typo3/cms-cli": "*"
+    },
+    "config": {
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin"
+    },
+    "bin": [
+        "typo3cms"
+    ],
+    "scripts": {
+        "set-version": [
+            "Helhum\\Typo3Console\\Composer\\InstallerScripts::setVersion"
+        ],
+        "extension-copy-artifacts": [
+            "cp -f Resources/Private/ExtensionArtifacts/ext_* .",
+            "cp -rf Resources/Private/ExtensionArtifacts/Resources/Public Resources/",
+            "cp -rf Resources/Private/ExtensionArtifacts/Classes/Console/* Classes/Console/"
+        ],
+        "extension-create-libs": [
+            "mkdir -p Libraries/temp",
+            "[ -f $HOME/.composer/vendor/bin/phar-composer ] || composer global require clue/phar-composer",
+            "if [ ! -f Libraries/symfony-process.phar ]; then cd Libraries/temp && composer require symfony/console=^3.4.4 symfony/process=^3.4.4 helhum/config-loader=^0.9.0 && composer config classmap-authoritative true && composer config prepend-autoloader true && composer dump-autoload -o; fi",
+            "[ -f Libraries/symfony-process.phar ] || $HOME/.composer/vendor/bin/phar-composer build Libraries/temp/ Libraries/symfony-process.phar",
+            "chmod -x Libraries/*.phar",
+            "rm -rf Libraries/temp"
+        ],
+        "extension-build": [
+            "@extension-create-libs",
+            "@extension-copy-artifacts"
+        ],
+        "extension-release": [
+            "@extension-build",
+            "rm -rf Packages/",
+            "rm -rf Resources/Private/ExtensionArtifacts/",
+            "rm -rf Resources/Private/Patches/",
+            "rm -rf Tests/",
+            "rm .gitattributes",
+            "rm -rf .github/",
+            "rm .gitignore",
+            "rm .php_cs.dist",
+            "rm .styleci.yml",
+            "rm .travis.yml",
+            "rm appveyor.yml",
+            "rm phpunit.xml.dist",
+            "rm sonar-project.properties"
+        ],
+        "extension-clean": [
+            "rm -rf Libraries Resources/Public/Icons",
+            "rm -f ext_*"
+        ]
+    },
+    "extra": {
+        "patches-file": "Resources/Private/Patches/patches.json",
+        "branch-alias": {
+            "dev-master": "5.x-dev"
+        },
+        "typo3/cms": {
+            "app-dir": ".Build",
+            "web-dir": ".Build/public",
+            "Package": {
+                "partOfMinimalUsableSystem": true
+            }
+        }
+    }
+}
