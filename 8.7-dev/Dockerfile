@@ -38,18 +38,20 @@ RUN cd /var/www/html && \
     mkdir typo3conf && \
     mkdir fileadmin && \
     mkdir uploads && \
-    touch FIRST_INSTALL && \
-    chown -R www-data. .
+    touch FIRST_INSTALL
 
 COPY ./Resources/Extensions/ /var/www/html/typo3conf/ext/
+COPY ./Resources/Scripts/ /var/www/html/fileadmin/
 
 # Set rights for copied files
 RUN cd /var/www/html && \
     find ./typo3conf/ext/ -type f -print0 | xargs -0 chmod 755 && \
     find ./typo3conf/ext/ -type d -print0 | xargs -0 chmod 755
 
+RUN chown -R www-data. .
+
 # Configure volumes
-VOLUME /var/www/html/fileadmin
-VOLUME /var/www/html/typo3conf
-VOLUME /var/www/html/typo3temp
-VOLUME /var/www/html/uploads
+#VOLUME /var/www/html/fileadmin
+#VOLUME /var/www/html/typo3conf
+#VOLUME /var/www/html/typo3temp
+#VOLUME /var/www/html/uploads
