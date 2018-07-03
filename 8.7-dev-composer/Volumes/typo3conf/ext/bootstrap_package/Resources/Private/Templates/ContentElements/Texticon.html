@@ -1,0 +1,21 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Header" />
+<f:section name="Main">
+
+    <div class="texticon texticon-{data.icon_position}">
+        <f:if condition="{icon}">
+            <f:link.typolink parameter="{data.header_link}">
+            <div class="texticon-icon texticon-size-{f:if(condition: '{data.icon_size} == 0', then: 'default')}{f:if(condition: '{data.icon_size} == 1', then: 'medium')}{f:if(condition: '{data.icon_size} == 2', then: 'large')}{f:if(condition: '{data.icon_size} == 3', then: 'awesome')} texticon-type-{f:if(condition: '{data.icon_type} == 0', then: 'default')}{f:if(condition: '{data.icon_type} == 1', then: 'square')}{f:if(condition: '{data.icon_type} == 2', then: 'circle')}">
+                <f:render partial="TextIcon/{identifier}" arguments="{_all}" />
+            </div>
+            </f:link.typolink>
+        </f:if>
+        <div class="texticon-content">
+            <f:render partial="Header/All" arguments="{_all}" />
+            <f:format.html>{data.bodytext}</f:format.html>
+        </div>
+    </div>
+
+</f:section>
+</html>

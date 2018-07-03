@@ -1,0 +1,33 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+
+    <f:if condition="{menu}">
+        <f:render partial="Menu/SkipNavigation" arguments="{_all}" />
+        <div class="thumbnail-menu">
+            <f:for each="{menu}" as="page">
+                <f:if condition="{page.files.0}">
+                    <f:if condition="{page.files.0.type} == 2">
+
+                        <a href="{page.link}"{f:if(condition: page.target, then: ' target="{page.target}"')} style="max-width: {settings.menuthumbnail.media.width as integer}px" title="{page.title}" class="thumbnail-menu-item" data-toggle="tooltip">
+                            <div class="thumbnail-menu-image">
+                                <f:media file="{page.files.0}" width="{settings.menuthumbnail.media.width}" height="{settings.menuthumbnail.media.height}" />
+                            </div>
+                            <div class="thumbnail-menu-caption">
+                                <f:if condition="{page.data.title}">
+                                    <h3 class="thumbnail-menu-caption-title"><f:format.crop maxCharacters="{settings.menuthumbnail.title.crop}">{page.data.title}</f:format.crop></h3>
+                                </f:if>
+                                <f:if condition="{page.data.abstract} && {settings.menuthumbnail.media.width as integer} > 300">
+                                    <p class="thumbnail-menu-caption-abstract"><f:format.crop maxCharacters="{settings.menuthumbnail.abstract.crop}">{page.data.abstract}</f:format.crop></p>
+                                </f:if>
+                            </div>
+                        </a>
+
+                    </f:if>
+                </f:if>
+            </f:for>
+        </div>
+    </f:if>
+
+</f:section>
+</html>

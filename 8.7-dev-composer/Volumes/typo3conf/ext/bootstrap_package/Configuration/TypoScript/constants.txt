@@ -1,0 +1,250 @@
+############################
+### CUSTOM SUBCATEGORIES ###
+###########################
+# customsubcategory=100=Page Template
+# customsubcategory=110=Logo
+# customsubcategory=111=Favicon
+# customsubcategory=120=Meta Settings
+# customsubcategory=138=Content Elements Preloading
+# customsubcategory=139=Content Elements Header
+# customsubcategory=140=Content Elements Templates
+# customsubcategory=143=Content Element Menu
+# customsubcategory=144=Content Element General
+# customsubcategory=145=Content Element Uploads
+# customsubcategory=150=Config
+# customsubcategory=160=Theme
+# customsubcategory=166=Section Footer
+# customsubcategory=167=Section Meta
+# customsubcategory=168=Section Language
+# customsubcategory=169=Section Copyright
+# customsubcategory=180=Tracking
+# customsubcategory=190=Bootstrap Package Settings
+# customsubcategory=BoostrapPackageExtensions=Extension Overrides
+
+############
+### PAGE ###
+############
+page {
+    logo {
+        # cat=bootstrap package: basic/110/100; type=string; label=Logo: Leave blank to use website title from template instead
+        file = EXT:bootstrap_package/Resources/Public/Images/BootstrapPackage.svg
+        # cat=bootstrap package: basic/110/110; type=string; label=Logo Inverted: Leave blank to use website title from template instead
+        fileInverted = EXT:bootstrap_package/Resources/Public/Images/BootstrapPackageInverted.svg
+        # cat=bootstrap package: basic/110/120; type=int+; label=Height: The image will not be resized!
+        height = 52
+        # cat=bootstrap package: basic/110/130; type=int+; label=Width: The image will not be resized!
+        width = 180
+        # cat=bootstrap package: basic/110/140; type=string; label=Alternative text: Text of the alt attribute of the logo image (default: "<website title> logo")
+        alt =
+        # cat=bootstrap package: basic/110/150; type=string; label=Link title: Title of the link attribute of the logo image
+        linktitle =
+    }
+
+    favicon {
+        # cat=bootstrap package: basic/111/100; type=string; label=Favicon
+        file = EXT:bootstrap_package/Resources/Public/Icons/favicon.ico
+    }
+
+    theme {
+        # cat=bootstrap package: basic/160/100; type=options[Default=default, Default Transition=default-transition, Inverse=inverse, Inverse Transition=inverse-transition]; label=Navigation Style
+        navigationstyle = default
+        # cat=bootstrap package: basic/160/101; type=options[Default=, Fixed Top=top, Fixed Bottom=bottom]; label=Navigation Type
+        navigationtype =
+        # cat=bootstrap package: basic/160/110; type=boolean; label=Breadcrumb: Enable to display the breadcrumb
+        breadcrumb = 1
+        # cat=bootstrap package: basic/160/111; type=int+; label=Breadcrumb Enable Level: Enable breadcrumb menu is greater or equal this value
+        breadcrumbEnableLevel = 2
+
+        footersection {
+            # cat=bootstrap package: basic/166/129; type=boolean; label=FooterSection: Enable to display the FooterSection at bottom
+            enable = 1
+        }
+
+        meta {
+            # cat=bootstrap package: basic/167/meta_enable; type=boolean; label=MetaSection: Enable to display the MetaSection at bottom
+            enable = 1
+            # cat=bootstrap package: basic/167/meta_navigationValue; type=string; label=Meta Navigation Values: Comma separated list of page uids
+            navigationValue =
+            # cat=bootstrap package: basic/167/meta_navigationType; type=options[List=list, Directory=directory]; label=Meta Navigation Type
+            navigationType = list
+            # cat=bootstrap package: basic/167/meta_includeNotInMenu; type=boolean; label=Meta Navigation include items not in menu
+            includeNotInMenu = 1
+        }
+
+        language {
+            # cat=bootstrap package: basic/168/language_enable; type=boolean; label=LanguageSection: Enable to display the LanguageSection at bottom
+            enable = 1
+            # cat=bootstrap package: basic/168/language_languageValue; type=string; label=Language Navigation Values: Comma separated list of language uids
+            languageValue = 0,1,2
+        }
+
+        copyright {
+            # cat=bootstrap package: basic/169/120; type=boolean; label=Copyright: Enable to display the copyright
+            enable = 1
+            # cat=bootstrap package: basic/169/121; type=string; label=Copyright Text
+            text = Built on a Windows 10 Surface Book. Running with <a href="http://www.typo3.org" target="_blank">TYPO3</a>.<br> Made with <span class="glyphicon glyphicon-heart"></span> by <a href="http://www.bk2k.info" target="_blank">Benjamin Kott</a>
+        }
+    }
+
+    fluidtemplate {
+        # cat=bootstrap package: advanced/100/100; type=string; label=Layout Root Path: Path to layouts
+        layoutRootPath = EXT:bootstrap_package/Resources/Private/Layouts/Page/
+        # cat=bootstrap package: advanced/100/110; type=string; label=Partial Root Path: Path to partials
+        partialRootPath = EXT:bootstrap_package/Resources/Private/Partials/Page/
+        # cat=bootstrap package: advanced/100/120; type=string; label=Template Root Path: Path to templates
+        templateRootPath = EXT:bootstrap_package/Resources/Private/Templates/Page/
+    }
+
+    meta {
+        # cat=bootstrap package: basic/120/100; type=string; label=Description: Enter a short description of the page. It will be displayed in the result lists of most search engines.
+        description =
+        # cat=bootstrap package: basic/120/110; type=string; label=Author: Enter the page author's name.
+        author =
+        # cat=bootstrap package: basic/120/120; type=string; label=Keywords: Enter keywords for the page separated by commas. You may also use short phrases.
+        keywords =
+        # cat=bootstrap package: advanced/120/100; type=string; label=viewport
+        viewport = width=device-width, initial-scale=1
+        # cat=bootstrap package: advanced/120/110; type=string; label=robots
+        robots = index,follow
+        # cat=bootstrap package: advanced/120/120; type=string; label=apple-mobile-web-app-capable
+        apple-mobile-web-app-capable = no
+        # cat=bootstrap package: advanced/120/130; type=string; label=compatible
+        compatible = IE=edge
+        # cat=bootstrap package: advanced/120/140; type=string; label=google
+        google = notranslate
+    }
+
+    tracking {
+        google {
+            # cat=bootstrap package: basic/180/100; type=string; label=Google: Tracking-ID
+            trackingID =
+            # cat=bootstrap package: basic/180/110; type=boolean; label=Google: IP-anonymisation
+            anonymizeIp = 1
+        }
+    }
+}
+
+##############
+### CONFIG ###
+##############
+config {
+    # cat=bootstrap package: advanced/150/110; type=boolean; label=No Cache
+    no_cache = 0
+    # cat=bootstrap package: advanced/150/120; type=options[Do not remove=0,Remove=1,Move to external file=external]; label=Remove default JavaScript
+    removeDefaultJS = 0
+    # cat=bootstrap package: advanced/150/130; type=boolean; label=Compress JavaScript
+    compressJs = 0
+    # cat=bootstrap package: advanced/150/140; type=boolean; label=Compress Css
+    compressCss = 0
+    # cat=bootstrap package: advanced/150/150; type=boolean; label=Concatenate JavaScript
+    concatenateJs = 0
+    # cat=bootstrap package: advanced/150/160; type=boolean; label=Concatenate Css
+    concatenateCss = 0
+    # cat=bootstrap package: advanced/150/170; type=boolean; label=Admin Panel
+    admPanel = 1
+    # cat=bootstrap package: advanced/150/180; type=options[None=,All=all,Cached=cached,Output=output]; label=Prefix local Anchors: See [http://docs.typo3.org/typo3cms/TyposcriptReference/Setup/Config/Index.html#prefixlocalanchors] for explanation.
+    prefixLocalAnchors = all
+    # cat=bootstrap package: advanced/150/190; type=string; label=Header Comment
+    headerComment = Based on the TYPO3 Bootstrap Package by Benjamin Kott - http://www.bk2k.info
+    # cat=bootstrap package: advanced/150/200; type=boolean; label=Force images preload: Preload images even when not visible on page to allow print
+    preloadImages = 0
+    # cat=bootstrap package: advanced/150/210; type=boolean; label=Send cache headers: Allow appropriate caching by transparent proxies and browser clients
+    sendCacheHeaders = 1
+}
+
+###############
+### FELOGIN ###
+###############
+styles.content.loginform {
+    templateFile = EXT:bootstrap_package/Resources/Private/Templates/FrontendLogin/FrontendLogin.html
+}
+
+#########################
+### BOOTSTRAP PACKAGE ###
+#########################
+plugin.bootstrap_package {
+    settings {
+        # cat=bootstrap package: advanced/190/100; type=boolean; label=Override LESS Variables: If enabled the variables defined in your LESS files will be overridden with the ones defined as TypoScript Constants.
+        overrideLessVariables = 1
+        # cat=bootstrap package: advanced/190/110; type=boolean; label=CSS source mapping: Create a CSS source map useful to debug Less in browser developer tools. Note: CSS compression will be disabled.
+        cssSourceMapping = 0
+    }
+}
+
+####################################
+### BOOTSTRAP PACKAGE EXTENSIONS ###
+####################################
+plugin.bootstrap_package {
+    view {
+        # cat=bootstrap package: advanced/BoostrapPackageExtensions/layoutRootPath; type=string; label=Layout Root Path: Path to layouts
+        layoutRootPath = EXT:bootstrap_package/Resources/Private/Layouts/
+        # cat=bootstrap package: advanced/BoostrapPackageExtensions/partialRootPath; type=string; label=Partial Root Path: Path to partials
+        partialRootPath = EXT:bootstrap_package/Resources/Private/Partials/
+        # cat=bootstrap package: advanced/BoostrapPackageExtensions/templateRootPath; type=string; label=Template Root Path: Path to templates
+        templateRootPath = EXT:bootstrap_package/Resources/Private/Templates/
+    }
+}
+
+##########################################
+### BOOTSTRAP PACKAGE CONTENT ELEMENTS ###
+##########################################
+plugin.bootstrap_package_contentelements {
+    header {
+        # cat=bootstrap package: advanced/139/defaultHeaderType; type=int[1-5]; label=Default Header type: Enter the number of the header layout to be used by default
+        defaultHeaderType = 2
+    }
+    view {
+        # cat=bootstrap package: advanced/140/layoutRootPath; type=string; label=Layout Root Path: Path to layouts
+        layoutRootPath = EXT:bootstrap_package/Resources/Private/Layouts/ContentElements/
+        # cat=bootstrap package: advanced/140/partialRootPath; type=string; label=Partial Root Path: Path to partials
+        partialRootPath = EXT:bootstrap_package/Resources/Private/Partials/ContentElements/
+        # cat=bootstrap package: advanced/140/templateRootPath; type=string; label=Template Root Path: Path to templates
+        templateRootPath = EXT:bootstrap_package/Resources/Private/Templates/ContentElements/
+    }
+    preload {
+        # cat=bootstrap package: advanced/138/100; type=boolean; label=Preload Images
+        images = 0
+    }
+    lightbox {
+        # cat=bootstrap package: advanced/144/100; type=string; label=Lightbox Css Class
+        cssClass = lightbox
+        # cat=bootstrap package: advanced/144/101; type=string; label=Lightbox Group Prefix
+        prefix = lightbox-group
+    }
+    menu_thumbnail {
+        media {
+            # cat=bootstrap package: advanced/143/102; type=string; label=Thumbnail Menu Media Height
+            height = 250c
+            # cat=bootstrap package: advanced/143/103; type=string; label=Thumbnail Menu Media Width
+            width = 440c
+        }
+        title {
+            # cat=bootstrap package: advanced/143/104; type=string; label=Thumbnail Menu Crop Title
+            crop = 100
+        }
+        abstract {
+            # cat=bootstrap package: advanced/143/105; type=string; label=Thumbnail Menu Crop Abstract
+            crop = 250
+        }
+    }
+    uploads {
+        preview {
+            # cat=bootstrap package: advanced/145/100; type=string; label=Uploads Preview Height
+            height = 100c
+            # cat=bootstrap package: advanced/145/101; type=string; label=Uploads Preview Width
+            width = 100c
+        }
+    }
+}
+
+####################
+#### EXTENSIONS ####
+####################
+[userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('indexed_search')]
+    <INCLUDE_TYPOSCRIPT: source="FILE:EXT:indexed_search/Configuration/TypoScript/constants.txt">
+[global]
+
+##################################
+#### BOOTSTRAP LESS CONSTANTS ####
+##################################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/Bootstrap/constants.txt">
