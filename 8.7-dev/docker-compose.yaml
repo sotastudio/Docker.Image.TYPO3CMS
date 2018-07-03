@@ -1,6 +1,5 @@
 version: "3.6"
 
-
 services:
 
   db:
@@ -18,18 +17,6 @@ services:
       - --skip-character-set-client-handshake
     restart: always
 
-  web:
-    build: .
-    ports:
-      - 80:80
-    volumes:
-      - fileadmin:/var/www/html/fileadmin:delegated
-      - typo3conf:/var/www/html/typo3conf:delegated
-      - uploads:/var/www/html/uploads:delegated
-    #command: sh /var/www/html/fileadmin/install.sh
-    links:
-      - db
-
   adminer:
     image: adminer
     ports:
@@ -37,6 +24,23 @@ services:
     links:
       - db
     restart: always
+    depends_on:
+      - db
+
+  web:
+    build:
+      context: ./Builds/apache2
+    ports:
+      - 80:80
+    volumes:
+      - ./Volumes/fileadmin:/var/www/html/fileadmin
+      - ./Volumes/typo3conf:/var/www/html/typo3conf
+      - ./Volumes/typo3temp:/var/www/html/typo3temp
+      - ./Volumes/uploads:/var/www/html/uploads
+    links:
+      - db
+    depends_on:
+      - db
 
 #  phpmyadmin:
 #    image: phpmyadmin/phpmyadmin
@@ -49,7 +53,5 @@ services:
 #      PMA_PORT: 3306
 #    restart: always
 
-volumes:
-  fileadmin:
-  typo3conf:
-  uploads:
+#volumes:
+

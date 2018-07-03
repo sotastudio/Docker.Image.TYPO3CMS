@@ -28,30 +28,13 @@ RUN apt-get update && \
         zlib1g-dev && \
     rm -rf /var/lib/apt/lists/* /usr/src/*
 
+COPY ./Resources/ /var/www/html/resources
+
 RUN cd /var/www/html && \
-    wget -O - https://get.typo3.org/8.7 | tar -xzf - && \
-    ln -s typo3_src-* typo3_src && \
-    ln -s typo3_src/index.php && \
-    ln -s typo3_src/typo3 && \
-    ln -s typo3_src/_.htaccess .htaccess && \
-    mkdir typo3temp && \
-    mkdir typo3conf && \
-    mkdir fileadmin && \
-    mkdir uploads && \
-    touch FIRST_INSTALL
-
-COPY ./Resources/Extensions/ /var/www/html/typo3conf/ext/
-COPY ./Resources/Scripts/ /var/www/html/fileadmin/
-
-# Set rights for copied files
-RUN cd /var/www/html && \
-    find ./typo3conf/ext/ -type f -print0 | xargs -0 chmod 755 && \
-    find ./typo3conf/ext/ -type d -print0 | xargs -0 chmod 755
-
-RUN chown -R www-data. .
+    chown -R www-data. .
 
 # Configure volumes
-#VOLUME /var/www/html/fileadmin
-#VOLUME /var/www/html/typo3conf
-#VOLUME /var/www/html/typo3temp
-#VOLUME /var/www/html/uploads
+VOLUME /var/www/html/fileadmin
+VOLUME /var/www/html/typo3conf
+VOLUME /var/www/html/typo3temp
+VOLUME /var/www/html/uploads
