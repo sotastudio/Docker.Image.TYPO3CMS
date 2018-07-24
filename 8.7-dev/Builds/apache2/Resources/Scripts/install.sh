@@ -26,7 +26,7 @@ cd /var/www/html && \
 
 cd /var/www/html && \
     ./typo3conf/ext/typo3_console/typo3cms install:setup --force \
-        --database-user-name "user" --database-user-password "pass" \
+        --database-user-name "root" --database-user-password "root" \
         --database-host-name "db" --database-name "typo3" --database-port "3306" --database-socket "" \
         --admin-user-name "admin" --admin-password "password" \
         --site-name "TYPO3 Project" --site-setup-type "no" --extension:setup\
